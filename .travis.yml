@@ -1,20 +1,25 @@
+sudo: required
 language: python
 python:
   "3.8"
+addons:
+  apt:
+    sources:
+      - google-chrome
+    packages:
+      - google-chrome-stable
 
 before_install:
-  wget https://tgapiutils.blob.core.windows.net/interceptor-packages/selenium-20.11.0-py2.py3-none-any.whl -O selenium-20.11.0-py2.py3-none-any.whl
+- wget https://tgapiutils.blob.core.windows.net/interceptor-packages/selenium-20.11.0-py2.py3-none-any.whl -O selenium-20.11.0-py2.py3-none-any.whl
 env:
   global:
-    export TG_ANALYZER=1
+  - export TG_ANALYZER=1
 
 
 install:
-  pip install selenium-20.11.0-py2.py3-none-any.whl -U
-  pip install -r requirements.txt
-  sudo apt install google-chrome-stable
-  sudo apt-get install firefox
- 
+  - pip install selenium-20.11.0-py2.py3-none-any.whl -U
+  - pip install -r requirements.txt
+
 script:
   python reactbank_test_old.py
   
