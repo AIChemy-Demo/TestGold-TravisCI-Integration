@@ -1,0 +1,20 @@
+language: python
+python:
+  "3.8"
+
+before_install:
+  wget https://tgapiutils.blob.core.windows.net/interceptor-packages/selenium-20.11.0-py2.py3-none-any.whl -O selenium-20.11.0-py2.py3-none-any.whl
+  pip install selenium-20.11.0-py2.py3-none-any.whl -U
+env:
+  global:
+    export TG_ANALYZER=1
+
+
+install:
+  pip install -r requirements.txt
+  sudo apt install google-chrome-stable
+  sudo apt-get install firefox
+ 
+script:
+  python reactbank_test_old.py
+  
