@@ -16,6 +16,7 @@ before_install:
 before_script:
   # include ChromeDriver in PATH
   - ln --symbolic /usr/lib/chromium-browser/chromedriver "${HOME}/bin/chromedriver"
+  - bundle exec rails runner "Webdrivers::Chromedriver.update"
   # start Chrome and listen on localhost
   - google-chrome-stable --headless --disable-gpu 
 
